@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;  // 씬 관리 관련 라이브러리
 
 public class GameManager : MonoBehaviour
 {
+    public int Point = 0;
+
     public GameObject gameover_text;       // 게임 오버 시 활성화할 텍스트 게임 오브젝트
     public Text time_text;                  // 생존 시간
     public Text record_text;                // 게임오버 상태
+    public Text score_text;
+
+    public static int itemAcount;
 
     private float survive_time;             // 생존 시간
     bool is_gamaover;                       //
@@ -28,6 +33,8 @@ public class GameManager : MonoBehaviour
             survive_time += Time.deltaTime;
             // 갱신한 생존 시간을 time_text 텍스트 컴포넌트를 이용해 표시
             time_text.text = "TIme" + (int)survive_time;
+
+            score_text.text = "Score : " + itemAcount.ToString();
         }
         else
         {
@@ -47,7 +54,7 @@ public class GameManager : MonoBehaviour
         // 게임오버 텍스트 게임 오브젝트를 활성화
         gameover_text.SetActive(true);
 
-        // Best_time 키로 저장된 이전까지의 최고 기록 가져오기
+        /*// Best_time 키로 저장된 이전까지의 최고 기록 가져오기
         float best_time = PlayerPrefs.GetFloat("Best_time");
 
         // 이전까지의 최고 기록보다 현재 생존 시간이 더 크다면
@@ -60,6 +67,6 @@ public class GameManager : MonoBehaviour
         }
 
         // 최고 기록을 record_text 컴포넌트를 이용해 표시
-        record_text.text = "Best_Time: " + (int)best_time;
+        record_text.text = "Best_Time: " + (int)best_time;*/
     }
 }

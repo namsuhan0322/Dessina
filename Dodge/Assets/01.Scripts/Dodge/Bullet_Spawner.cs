@@ -6,7 +6,7 @@ public class Bullet_Spawner : MonoBehaviour
 {
     public GameObject bullet_prefab;        // 생성할 탄알의 원본 프리팹
     public float spqwn_rate_min = 0.5f;      // 최소 생성 주기
-    public float spqwn_rate_max = 3f;      // 최대 생성 주기
+    public float spqwn_rate_max = 1.5f;      // 최대 생성 주기
 
     Transform target;   // 발사할 대상
     float spawn_rate;   // 생성 주기
@@ -41,7 +41,7 @@ public class Bullet_Spawner : MonoBehaviour
             GameObject bullet
                 = Instantiate(bullet_prefab, transform.position, transform.rotation);
             // 생성된 bullet 게임 오브젝트의 정면 방향이 target을 향하도록 회전
-            bullet.transform.LookAt(target);
+            //bullet.transform.LookAt(target);
 
             // 다음번 생성 간격을 spqwn_rate_min, spqwn_rate_max 사이에서 랜덤 지정
             spawn_rate = Random.Range(spqwn_rate_min, spqwn_rate_max);

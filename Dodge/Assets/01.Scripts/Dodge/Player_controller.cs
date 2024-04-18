@@ -6,8 +6,8 @@ public class Player_controller : MonoBehaviour
 {
     public Rigidbody player_rigidbody;          //이동에 사용할 리지드바디 컴포넌트
     public float speed = 8f;                    //이동속력
-    int test;
-   
+    public int point = 0;               // 점수 사용할 변수 추가
+
     private void Awake()
     {
         
@@ -33,6 +33,16 @@ public class Player_controller : MonoBehaviour
         Vector3 newVelocity = new Vector3 (xSpeed, 0, zSpeed);
         //리지드바디의 속도에 newVelocity 할당
         player_rigidbody.velocity = newVelocity;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))       // CompareTag 함수는 지어진 Tag(Item) 이름을 검사한다.   
+        {
+            Debug.Log("아이템과 충돌함");
+            point += 1;                    
+            Destroy(other.gameObject);      // 파괴한다.    
+        }
     }
     public void Die()
     {
